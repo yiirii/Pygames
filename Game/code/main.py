@@ -32,8 +32,10 @@ class Game:
             'hospital': load_pygame(hospital_path)
             }
         
+
         self.overworld_frames = {
-            'water': import_folder(join(base_path, 'graphics', 'tilesets', 'water'))
+            'water': import_folder(join(base_path, 'graphics', 'tilesets', 'water')),
+            'cost': coast_importer(24, 12, '..', 'graphics', 'tilesets', 'coast')
             }
 
 
