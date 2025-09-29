@@ -58,4 +58,7 @@ def coast_importer(cols, rows, *path):
     	'left': (0,1), 'right': (2,1), 'bottomleft': (0,2),
     	'bottom': (1,2), 'bottomright': (2,2)}
 	for index, terrain in enumerate(terrains):
-		print(index, terrain)
+		new_dict[terrain] = {}
+		for key, pos in sides.items():
+			new_dict[terrain][key] = [frame_dict[(pos[0] + index * 3, pos[1] + row)] for row in range(0, rows, 3)]
+	return new_dict
