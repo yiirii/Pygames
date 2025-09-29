@@ -35,7 +35,8 @@ class Game:
         
         self.overworld_frames = {
             'water': import_folder(join(base_path, 'graphics', 'tilesets', 'water')),
-            'coast': coast_importer(24, 12, '..', 'graphics', 'tilesets', 'coast')
+            'coast': coast_importer(24, 12, join(base_path, 'graphics', 'tilesets', 'coast')),
+            'characters': all_character_import(join(base_path, 'graphics', 'characters'))
             }
 
 
@@ -53,7 +54,10 @@ class Game:
         # entities
         for obj in tmx_map.get_layer_by_name('Entities'):
             if obj.name == 'Player' and obj.properties['pos'] == player_start_pos:
-                self.player = Player((obj.x, obj.y), self.all_sprites)
+                self.player = Player(
+                    pos = (obj.x, obj.y), 
+                    frames = self.overworld_frames['characters']['player'], 
+                    groups = self.all_sprites)
 
         # water
         for obj in tmx_map.get_layer_by_name('Water'):
