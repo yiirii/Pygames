@@ -3,7 +3,7 @@ from pytmx.util_pygame import load_pygame
 from os.path import join, dirname, abspath
 
 from sprites import Sprite, AnimatedSprite
-from entities import Player
+from entities import Player, Character
 from groups import AllSprites
 
 from support import *
@@ -41,35 +41,49 @@ class Game:
 
 
     def setup(self, tmx_map, player_start_pos):
-
         # terrain
         for layer in ['Terrain', 'Terrain Top']:
             for x,y, surf in tmx_map.get_layer_by_name(layer).tiles():
-                Sprite((x * TILE_SIZE, y * TILE_SIZE), surf, self.all_sprites) 
+                Sprite((x * TILE_SIZE, y * TILE_SIZE), surf, self.all_sprites, WORLD_LAYERS['bg']) 
         
-        # objects
-        for obj in tmx_map.get_layer_by_name('Objects'):
-            Sprite((obj.x, obj.y), obj.image, self.all_sprites)
-
-        # entities
-        for obj in tmx_map.get_layer_by_name('Entities'):
-            if obj.name == 'Player' and obj.properties['pos'] == player_start_pos:
-                self.player = Player(
-                    pos = (obj.x, obj.y), 
-                    frames = self.overworld_frames['characters']['player'], 
-                    groups = self.all_sprites)
-
         # water
         for obj in tmx_map.get_layer_by_name('Water'):
             for x in range(int(obj.x), int(obj.x + obj.width), TILE_SIZE):
                 for y in range(int(obj.y), int(obj.y + obj.height), TILE_SIZE):
-                    AnimatedSprite((x, y), self.overworld_frames['water'], self.all_sprites)
+                    AnimatedSprite((x, y), self.overworld_frames['water'], self.all_sprites, WORLD_LAYERS['water'])
 
         # coast
         for obj in tmx_map.get_layer_by_name('Coast'):
             terrain = obj.properties['terrain']
             side = obj.properties['side']
-            AnimatedSprite((obj.x, obj.y), self.overworld_frames['coast'][terrain][side], self.all_sprites)
+            AnimatedSprite((obj.x, obj.y), self.overworld_frames['coast'][terrain][side], self.all_sprites, WORLD_LAYERS['bg'])
+
+        # objects
+        for obj in tmx_map.get_layer_by_name('Objects'):
+            if obj.name == 'top':
+                Sprite((obj.x, obj.y), obj.image, self.all_sprites, WORLD_LAYERS['top'])
+            else:
+                Sprite((obj.x, obj.y), obj.image, self.all_sprites)
+
+        # grass patches
+        for obj in tmx_map.get_layer_by_name('Monsters'):
+            Sprite((obj.x, obj.y), obj.image, self.all_sprites)
+
+        # entities
+        for obj in tmx_map.get_layer_by_name('Entities'):
+            if obj.name == 'Player':
+                if obj.properties['pos'] == player_start_pos:
+                    self.player = Player(
+                        pos = (obj.x, obj.y), 
+                        frames = self.overworld_frames['characters']['player'], 
+                        groups = self.all_sprites, 
+                        facing_direction = obj.properties['direction'])
+            else:
+                Character(
+                    pos = (obj.x, obj.y), 
+                    frames = self.overworld_frames['characters'][obj.properties['graphic']], 
+                    groups = self.all_sprites, 
+                    facing_direction = obj.properties['direction'])
 
     def run(self):
         while True:
