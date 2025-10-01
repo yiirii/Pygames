@@ -6,6 +6,7 @@ from os.path import join, dirname, abspath
 from sprites import Sprite, AnimatedSprite, MonsterPatchSprite, BorderSprite, CollidableSprite
 from entities import Player, Character
 from groups import AllSprites
+from dialog import DialogTree
 
 from support import *
 
@@ -105,7 +106,7 @@ class Game:
                 if check_connections(100, self.player, character):
                     self.player.block() # block player input
                     character.change_facing_direction(self.player.rect.center) # make entities face each other
-                    self.create_dialog()
+                    self.create_dialog(character)
 
     def create_dialog(self, character):
         DialogTree(character, self.player, self.all_sprites, self.fonts['dialog'])
