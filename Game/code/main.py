@@ -1,4 +1,5 @@
 from settings import *
+from game_data import *
 from pytmx.util_pygame import load_pygame
 from os.path import join, dirname, abspath
 
@@ -94,7 +95,8 @@ class Game:
                     pos = (obj.x, obj.y), 
                     frames = self.overworld_frames['characters'][obj.properties['graphic']], 
                     groups = (self.all_sprites, self.collision_sprites, self.character_sprites),
-                    facing_direction = obj.properties['direction'])
+                    facing_direction = obj.properties['direction'],
+                    character_data = TRAINER_DATA[obj.properties['character_id']])
 
     def input(self):
         keys = pygame.key.get_just_pressed()
