@@ -24,7 +24,8 @@ class Game:
 
         self.import_assets()
         self.setup(self.tmx_maps['world'], 'house')
-        #
+        
+        self.dialog_tree = None
 
     def import_assets(self):
         base_path = dirname(dirname(abspath(__file__)))   # points to Game/
@@ -100,16 +101,18 @@ class Game:
                     character_data = TRAINER_DATA[obj.properties['character_id']])
 
     def input(self):
-        keys = pygame.key.get_just_pressed()
-        if keys[pygame.K_SPACE]:
-            for character in self.character_sprites:
-                if check_connections(100, self.player, character):
-                    self.player.block() # block player input
-                    character.change_facing_direction(self.player.rect.center) # make entities face each other
-                    self.create_dialog(character)
+        if not self.dialog_tree:
+            keys = pygame.key.get_just_pressed()
+            if keys[pygame.K_SPACE]:
+                for character in self.character_sprites:
+                    if check_connections(100, self.player, character):
+                        self.player.block() # block player input
+                        character.change_facing_direction(self.player.rect.center) # make entities face each other
+                        self.create_dialog(character)
 
     def create_dialog(self, character):
-        DialogTree(character, self.player, self.all_sprites, self.fonts['dialog'])
+        if not self.dialog_tree:
+            self.dialog_tree = DialogTree(character, self.player, self.all_sprites, self.fonts['dialog'])
 
     def run(self):
         while True:
@@ -125,6 +128,10 @@ class Game:
             self.all_sprites.update(dt)
             self.display_surface.fill('black')
             self.all_sprites.draw(self.player.rect.center)
+
+            # overlays
+            if self.dialog_tree: self.dialog_tree.update()
+
             pygame.display.update()
 
 if __name__ == '__main__':
