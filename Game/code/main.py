@@ -40,6 +40,10 @@ class Game:
             'coast': coast_importer(24, 12, join(base_path, 'graphics', 'tilesets', 'coast')),
             'characters': all_character_import(join(base_path, 'graphics', 'characters'))
             }
+        
+        self.fonts = {
+            'dialog': pygame.font.Font(join(base_path, 'graphics', 'fonts', 'PixeloidSans.ttf'), 30)
+        }
 
 
     def setup(self, tmx_map, player_start_pos):
@@ -97,11 +101,12 @@ class Game:
         if keys[pygame.K_SPACE]:
             for character in self.character_sprites:
                 if check_connections(100, self.player, character):
-                    # block player input
-                    self.player.block()
-                    # make entities face each other
-                    # create dialogue
-                    print('dialogue')
+                    self.player.block() # block player input
+                    character.change_facing_direction(self.player.rect.center) # make entities face each other
+                    self.create_dialog()
+
+    def create_dialog(self, character):
+        DialogTree(character, self.player, self.all_sprites, self.fonts['dialog'])
 
     def run(self):
         while True:
