@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Game (Custom)",
+            "type": "python",
+            "request": "launch",
+            // Program is now relative to the Game folder:
+            "program": "${workspaceFolder}/code/main.py", 
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            
+            // CWD is the Game folder (where 'graphics' is located):
+            "cwd": "${workspaceFolder}", 
+
+            // Keep the interpreter path as it was the one that worked for Pygame/Pytmx
+            "python": "C:/Users/keith/AppData/Local/Programs/Python/Python312/python.exe" 
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Game (Custom)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/code/main.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            
+            // 🎯 FIX 1: Set the Current Working Directory (CWD) to the project root
+            // ${workspaceFolder} resolves to: d:\Unity Stuff\Pygames\Game
+            "cwd": "${workspaceFolder}", 
+
+            // 🎯 FIX 2: Specify the exact Python interpreter path
+            // This path must be the one that has pygame-ce and pytmx installed
+            "python": "C:/Users/keith/AppData/Local/Programs/Python/Python312/python.exe" 
+        }
+    ]
+}
