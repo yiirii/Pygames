@@ -26,10 +26,10 @@ class Game:
 
         # player monsters
         self.player_monsters = {
-            0: Monster('Charmadillo', 30),
-            1: Monster('Friolera', 29),
-            2: Monster('Larvea', 3),
-            3: Monster('Atrox', 24),
+            0: Monster('Shoorma', 30),
+            1: Monster('Verdan', 29),
+            2: Monster('Aerozen', 3),
+            3: Monster('Protoroom', 24),
             #4: Monster('Sparchu', 24),
             #5: Monster('Gulfin', 24),
             #6: Monster('Jacana', 2),
