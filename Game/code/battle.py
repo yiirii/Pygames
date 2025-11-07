@@ -108,7 +108,7 @@ class Battle:
                         self.current_monster.activate_attack(monster_sprite, self.selected_attack)
                         self.selected_attack, self.current_monster, self.selection_mode = None, None, None
                     else:
-                        if monster_sprite.monster.health < monster_sprite.monster.get_stat('max_health') * 0.1:
+                        if monster_sprite.monster.health < monster_sprite.monster.get_stat('max_health') * 0.9:
                             self.monster_data['player'][len(self.monster_data['player'])] = monster_sprite.monster
                             monster_sprite.delayed_kill(None)
                             self.update_all_monsters('resume')

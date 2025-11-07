@@ -16,7 +16,6 @@ from timer import Timer
 from support import *  # This imports coast_importer and other functions
 from monster import Monster
 
-
 class Game:
     # general
     def __init__(self):
@@ -28,10 +27,10 @@ class Game:
 
         # player monsters
         self.player_monsters = {
-            0: Monster('Shoorma', 30),
-            1: Monster('Verdan', 29),
-            2: Monster('Aerozen', 3),
-            3: Monster('Protoroom', 24),
+            0: Monster('Shiken', 90),
+            1: Monster('Verdan', 92),
+            2: Monster('Aerozen', 96),
+            3: Monster('Protoroom', 84),
         }
 
         # groups

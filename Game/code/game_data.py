@@ -329,39 +329,39 @@ MONSTER_DATA = {
 		'evolve': None},
     'Protoroom': {
         'stats': {'element': 'plant', 'max_health': 18, 'max_energy': 22, 'attack': 5, 'defense': 7, 'recovery': 6, 'speed': 1.1},
-        'abilities': {0: 'scratch', 5: 'spark'},
+        'abilities': {0: 'scratch', 5: 'spark', 15: 'annihilate', 20: 'burn'},
         'evolve': None},
     'Mushcap': {
         'stats': {'element': 'plant', 'max_health': 15, 'max_energy': 20, 'attack': 4, 'defense': 9, 'recovery': 5, 'speed': 1.3},
-        'abilities': {0: 'scratch', 5: 'spark'},
+        'abilities': {0: 'scratch', 5: 'spark', 15: 'spark', 20: 'ice'},
         'evolve': None},
     'Aerozen': {
         'stats': {'element': 'water', 'max_health': 17, 'max_energy': 25, 'attack': 6, 'defense': 8, 'recovery': 7, 'speed': 2.2},
-        'abilities': {0: 'scratch', 5: 'spark', 10: 'splash'},
+        'abilities': {0: 'scratch', 5: 'spark', 10: 'splash', 15: 'heal'},
         'evolve': None},
     'Emberoot': {
         'stats': {'element': 'fire', 'max_health': 20, 'max_energy': 18, 'attack': 7, 'defense': 6, 'recovery': 5, 'speed': 0.9},
-        'abilities': {0: 'scratch', 5: 'fire'},
+        'abilities': {0: 'scratch', 5: 'fire', 15: 'explosion', 20: 'burn'},
         'evolve': None},
     'ToxicCap': {
         'stats': {'element': 'plant', 'max_health': 16, 'max_energy': 19, 'attack': 5, 'defense': 9, 'recovery': 6, 'speed': 1.5},
-        'abilities': {0: 'scratch', 5: 'spark'},
+        'abilities': {0: 'scratch', 5: 'spark', 15: 'battlecry', 20: 'burn'},
         'evolve': None},
     'Shoorma': {
         'stats': {'element': 'plant', 'max_health': 19, 'max_energy': 23, 'attack': 6, 'defense': 10, 'recovery': 7, 'speed': 1.4},
-        'abilities': {0: 'scratch', 5: 'spark'},
+        'abilities': {0: 'scratch', 5: 'spark', 15: 'ice', 20: 'splash'},
         'evolve': None},
     'Verdan': {
         'stats': {'element': 'plant', 'max_health': 14, 'max_energy': 16, 'attack': 3, 'defense': 8, 'recovery': 5, 'speed': 1.1},
-        'abilities': {0: 'scratch', 5: 'spark'},
+        'abilities': {0: 'scratch', 5: 'spark', 15: 'heal', 20: 'battlecry'},
         'evolve': None},
     'Shiken': {
         'stats': {'element': 'plant', 'max_health': 21, 'max_energy': 24, 'attack': 6, 'defense': 11, 'recovery': 7, 'speed': 1.2},
-        'abilities': {0: 'scratch', 5: 'spark'},
+        'abilities': {0: 'scratch', 5: 'spark', 15: 'ice', 20: 'annihilate'},
         'evolve': None},
     'Enflare': {
         'stats': {'element': 'fire', 'max_health': 25, 'max_energy': 20, 'attack': 8, 'defense': 12, 'recovery': 8, 'speed': 1.6},
-        'abilities': {0: 'scratch', 5: 'fire', 15: 'explosion'},
+        'abilities': {0: 'scratch', 5: 'fire', 15: 'explosion', 20: 'burn'},
         'evolve': None},
 }
 
